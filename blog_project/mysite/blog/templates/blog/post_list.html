@@ -1,0 +1,27 @@
+{% extends "blog/base.html" %}
+
+{% block title_block %}
+    Posts
+{% endblock title_block %}
+
+{% block content %}
+    <div class="centerstage">
+        {% for post in post_list %}
+            <div class="post jumbotron"> 
+                <h1> <a href="{% url "post_detail" pk=post.pk %}"> {{ post.title }}</a></h1>
+                <p> {{ post.text }}</p>
+                <div class="date">
+                    <p> Published on: {{ post.published_date|date:"D M Y" }}</p>
+                </div>
+                <a href="{% url "post_detail" pk=post.pk %}" class="btn btn-primary"> 
+                    {% if post.approve_comments == 1 %}    
+                        1 Comment
+                    {% else %}
+                        {{ post.approve_comments.count }} Comments
+                    {% endif %}
+                </a>
+            </div>
+        {% endfor %}
+    </div>
+    
+{% endblock content %}

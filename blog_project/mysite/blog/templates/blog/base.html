@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+{% load staticfiles %}
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+
+    <!-- Title Block -->
+    <title>
+        {% block title_block %}
+        {% endblock title_block %}
+    </title>
+
+    <!-- Bootstrap -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+
+    <!-- Font Awesome 5 -->
+    <script src="https://kit.fontawesome.com/fd535b0c39.js" crossorigin="anonymous"></script>
+    
+    <!-- Medium Style Editor -->
+    <script src="//cdn.jsdelivr.net/npm/medium-editor@latest/dist/js/medium-editor.min.js"></script>
+    <link rel="stylesheet" href="//cdn.jsdelivr.net/npm/medium-editor@latest/dist/css/medium-editor.min.css" type="text/css" media="screen" charset="utf-8">
+
+    <!-- Custom CSS -->
+    <link rel="stylesheet" href="{% static "css/blog.css" %}">
+
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css?family=Lato&display=swap" rel="stylesheet">
+</head>
+
+<body>
+    <!-- Navbar -->
+    <nav class="navbar navbar-expand-lg custom-navbar">
+        <div class="container">
+            <ul class="nav navbar-nav"> 
+                <li>
+                    <a class="navbar-brand" href="{% url "post_list" %}"> Myblog </a>
+                </li>
+                <li>
+                    <a class="navbar-brand" href="{% url "about" %}"> About </a>
+                </li> 
+            </ul>
+            <!-- User Authentications -->
+            <ul class="nav navbar-nav navbar-right">
+                {% if user.is_authenticated %}
+                    <li>
+                        <a class="navbar-brand" href="{% url "post_new" %}"><i class="far fa-plus-square">New Post</i></a>
+                    </li>
+                    <li>
+                        <a class="navbar-brand" href="{% url "post_draft_list" %}"><i class="far fa-clipboard">Drafts</i></a>
+                    </li>
+                    <li>
+                        <a class="navbar-brand" href="{% url "logout" %}">Logout</a>
+                    </li>
+                    <li>
+                        <a class="navbar-brand"><i class="fas fa-user">{{ user.username }}</i></a>
+                    </li>
+
+                {% else %}
+                    <li>
+                        <a class="navbar-brand" href="{% url "login" %}"><i class="far fa-user"> Login </i></a>
+                    </li>
+                {% endif %}
+            </ul>
+        </div>
+    </nav> 
+
+    <!-- Content Block -->
+    <div class="content container">
+        <div class="row">
+            <div class="col-md-8">
+                <div class="blog_posts">
+                    {% block content %}
+                    {% endblock content %}
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+</html>

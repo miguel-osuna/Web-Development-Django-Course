@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+{% load static %}
+<html lang="en">
+  <head>
+    <link rel="stylesheet" href="{% static "app_two/css/users.css" %}" />
+    <title>Users Model</title>
+  </head>
+  <body>
+    <div class="users-list">
+      {% if users %}
+      <ol>
+        {% for user in users %}
+        <div class="new-item">
+          <li>
+            <p>User Info</p>
+            <ul>
+              <li>
+                {{user.first_name}}
+              </li>
+              <li>
+                {{user.last_name}}
+              </li>
+              <li>
+                {{user.email}}
+              </li>
+            </ul>
+          </li>
+        </div>
+        {% endfor %}
+      </ol>
+      {% else %}
+      <p>No access to Users Model</p>
+      {% endif %}
+    </div>
+  </body>
+</html>
+  
+  
+

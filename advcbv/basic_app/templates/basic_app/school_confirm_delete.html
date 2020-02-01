@@ -1,0 +1,17 @@
+{% extends "basic_app/basic_app_base.html" %}
+
+{% block title %}
+  School Confirm Delete
+{% endblock title %}
+
+{% block body_block %}
+<div class="jumbotron">
+    <h1> Delete {{ school.name }}? </h1>
+    <form class="form-check"> 
+        {% csrf_token %}
+        <input type="button" value="Delete" class="btn btn-danger">
+        <a href="{% url "basic_app:school_detail" pk=school.pk %}" class="btn btn-primary"> Cancel <a> 
+    </form>
+</div>
+{% endblock body_block %}
+

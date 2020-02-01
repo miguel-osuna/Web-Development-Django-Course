@@ -1,0 +1,18 @@
+
+# VS Code configuration
+.vscode
+
+# Virtual environment 
+venv
+
+# Compiled files 
+*.pyc
+
+# Static files 
+staticfiles
+
+# Environment variables 
+.env
+
+# Database
+db.sqlite3

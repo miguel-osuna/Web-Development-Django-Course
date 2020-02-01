@@ -1,0 +1,25 @@
+
+
+{% extends "basic_app/basic_app_base.html" %}
+
+{% block title %}
+  School Form 
+{% endblock title %}
+
+{% block body_block %}
+<div class="jumbotron">
+   <h1> Welcome to school form </h1>
+   <h1> 
+        {% if not form.instance.pk %}
+        Create School
+        {% else %}
+        Update School
+        {% endif %}
+   </h1> 
+   <form method="POST" class="form-check">
+       {% csrf_token %}
+       {{ form.as_p }}
+       <input type="submit" value="Submit">
+   </form>
+</div>
+{% endblock body_block %}

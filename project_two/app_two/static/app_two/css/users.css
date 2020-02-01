@@ -1,0 +1,12 @@
+.users-list {
+  display: flex;
+  justify-content: center;
+}
+
+.new-item {
+  color: rgb(41, 37, 37);
+  background: lightsalmon;
+  border: 5px solid white;
+  display: flex;
+  justify-content: center;
+}
